@@ -1,7 +1,7 @@
 body,ol,ul,li,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,header,nav,section,footer{margin:0;padding:0;/* box-sizing: border-box; */} 
 body{font:12px "微软雅黑","Arial Narrow",HELVETICA;background:#fff;}
 a{text-decoration:none;color:#ffffff;} 
-b,strong{font-weight: normal;}
+b,strong,th{font-weight: normal;}
 i,em{font-style:normal;}
 li{list-style:none;}
 img{border:0;display: inline-block;vertical-align: top;} 
@@ -14,19 +14,13 @@ html{
 	height: 100%;
 }
 body{
-	width: 100%;
+	 width: 100%; 
 	height: 100%;
-	/* overflow: hidden; */
-	/* display: flex;
-	flex-direction: column; */
 }
 .top_box{
 	background: #303030;
 	width: 100%;
 	height: 118px;
-	/* position: absolute;
-	left: 0;
-	top: 0; */
 }
 .top_menu{
 	background: #303030;
@@ -61,6 +55,9 @@ body{
 	display: block;
 	text-decoration: none;
 }
+.menu_list ul li a:hover{
+	background: #404040;
+}
 .menu_list ul li img{
 	margin: auto;
 	display: block;
@@ -94,6 +91,9 @@ body{
 	color: #fff;
 	padding: 0px 12px;
 	display: block;
+}
+.top_nav ul li a:hover{
+	background: #454545;
 }
 .border_r{
 	height: 13px;
@@ -195,10 +195,14 @@ body{
 	cursor: pointer;
 	background: #575757 url(../images/menu_1.png) 9px 0 no-repeat;
 }
+.left_box>ul>li:hover{
+	background-color: #454545;
+}
 .left_box>ul>li>ul{
 	padding: 0;
 	margin: 0;
 	color: #335b64;
+	display: none;
 }
 .left_box>ul>li>ul>li{
 	font-size: 12px;
@@ -208,14 +212,18 @@ body{
 	font-weight: normal;
 	background: #575757;
 }
-
+.left_box>ul>li>ul>li:hover{
+	background: #797979;
+}
 /*  ==============right===============  */
+
+.tab_box1{
+	display: none;
+}
 .right_box{
 	margin: 0;
-	margin-left: 190px;
-	/* margin-top: 118px; */
+	width: 100%;
 	height: 100%;
-	/* min-width: 773px; */
 	color: #192e32;
 	font-size: 12px;
 	background: url(../images/body_bj.jpg);
@@ -234,6 +242,9 @@ h1{
 }
 h1 a{
 	color: #333;
+}
+h1 a:hover{
+	color:#eb8a3d;
 }
 h1 .action_span1{
 	color: #4c4c4c;
@@ -275,6 +286,17 @@ h1 .action_span a{
 .tab_div p{
 	margin: 2px 0 0 0;
 }
+.tab-back{
+	padding: 0 20px;
+	text-align: center;
+	font-size: 13px;
+	display: block;
+	float: left;
+	color: #787878;
+	line-height: 39px;
+	cursor: pointer;
+}
+
 .tab-front{
 	background: #fefefe;
 	height: 39px;
@@ -284,16 +306,6 @@ h1 .action_span a{
 	padding: 0 20px;
 	text-align: center;
 	font-weight: bold;
-	cursor: pointer;
-}
-.tab-back{
-	padding: 0 20px;
-	text-align: center;
-	font-size: 13px;
-	display: block;
-	float: left;
-	color: #787878;
-	line-height: 39px;
 	cursor: pointer;
 }
 
