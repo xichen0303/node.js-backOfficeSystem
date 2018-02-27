@@ -183,7 +183,7 @@
 		</div>
 	</div>
 	<!--  ========bottom==========  -->
-	<div class="bottom_box">
+
 		<!--  ========left==========  -->
 		<div class="left_box">
 			<p>导航菜单</p>
@@ -755,14 +755,276 @@
 			<img src="../public/images/arrow_left.gif" alt="">
 		</div>
 		<!--  ========right==========  -->
-		<div >
-			<div class="right_box">
-				<h1>
-					<span>ecshop</span>
-				</h1>
+		
+		<div class="right_box">
+			<h1>
+				<span class="action_span1"><a href="javascript:;">ECSHOP 管理中心</a></span>
+				<span class="action_span1">- 添加新商品</span>
+				<span class="help_sub"><a href="javascript:;"><img src="../public/images/jnsy.png" alt=""></a></span>
+				<span class="action_span"><a href="javascript:;">商品列表</a></span>
+			</h1>
+			<div class="content">
+				<div class="tab_div">
+					<p>
+						<span class="tab-front">通用信息</span>
+						<span class="tab-back">详细描述</span>
+						<span class="tab-back">其他信息</span>
+						<span class="tab-back">商品属性</span>
+						<span class="tab-back">商品相册</span>
+						<span class="tab-back">关联商品</span>
+						<span class="tab-back">配件</span>
+						<span class="tab-back">关联文章</span>
+					</p>
+				</div>
+			<!--   ======================    -->
+				<div class="tab_body">
+					<div class="tab_box1">
+						<table>
+							<tbody>
+								<tr>
+									<td class="label">商品名称:</td>
+									<td>
+										<input type="text" name="goods_name" style="float: left;" size="30">
+										<div style="float: left;margin: 10px 0 0 5px;background: rgb(255,255,255);">
+											<img src="../public/images/color_selecter.gif" alt="">
+										</div>&nbsp;
+										<select name="goods_name_style" id="">
+											<option value="">字体样式</option>
+											<option value="strong">加粗</option>
+											<option value="em">字体</option>
+											<option value="u">下划线</option>
+											<option value="strike">删除线</option>
+										</select>
+										<span class="require-field">*</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										商品货号:
+									</td>
+									<td>
+										<input type="text" name="goods_sn" size="20"><span></span><br/>
+										<span>如果您不输入商品货号，系统将自动生成一个唯一的货号。</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										商品分类:
+									</td>
+									<td>
+										<select name="cat_id" id="">
+											<option value="">请选择</option>
+											<option value="">钻石</option>
+											<option value="">裤子</option>
+											<option value="">外套</option>
+											<option value="">衬衫</option>
+											<option value="">背心</option>
+											<option value="">长裤</option>
+											<option value="">西裤</option>
+											<option value="">被子</option>
+											<option value="">枕头</option>
+											<option value="">传单</option>
+											<option value="">帽子</option>
+										</select><a href="javascript:;" class="special">添加分类</a>
+										<span class="require-field">*</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										扩展分类:
+									</td>
+									<td>
+										<input type="button" value="添加" class="button">
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										商品品牌:
+									</td>
+									<td>
+										<select name="cat_id" id="">
+											<option value="">请选择</option>
+											<option value="">钻石</option>
+											<option value="">裤子</option>
+											<option value="">外套</option>
+											<option value="">衬衫</option>
+											<option value="">背心</option>
+											<option value="">长裤</option>
+											<option value="">西裤</option>
+											<option value="">被子</option>
+											<option value="">枕头</option>
+											<option value="">传单</option>
+											<option value="">帽子</option>
+										</select><a href="javascript:;" class="special">添加品牌</a>
+										<span class="require-field">*</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">本店售价:</td>
+									<td>
+										<input type="text" name="shop_price" style="float: left;" value="0" size="20">
+										<input type="button" value="按市场价计算" style="margin-top: 4px;margin-left: 5px">
+										<span class="require-field">*</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										会员价格:
+									</td>
+									<td>
+										注册用户
+										<input type="text" value="-1" size="8">
+										代销用户
+										<input type="text" value="-1" size="8">
+										vip
+										<input type="text" value="-1" size="8">
+										<br/>
+										<span>会员价格为-1时表示会员价格按会员等级折扣率计算。你也可以为每个等级指定一个固定价格</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										商品优惠价格:
+									</td>
+									<td>
+										[+]优惠数量
+										<input type="text" value="" size="8">
+										优惠价格
+										<input type="text" value="" size="8">
+										<br/>
+										<span>购买数量达到优惠数量时享受的优惠价格</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										市场售价:
+									</td>
+									<td>
+										<input type="text" value="0" size="20">
+										<input type="button" value="取整数">
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										虚拟销量:
+									</td>
+									<td>
+										<input type="text" value="0" size="20">
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										赠送消费积分数:
+									</td>
+									<td>
+										<input type="text" value="-1" size="20">
+										<br/>
+										<span>购买该商品时赠送消费积分数,-1表示按商品价格赠送</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										赠送等级积分数:
+									</td>
+									<td>
+										<input type="text" value="-1" size="20">
+										<br/>
+										<span>购买该商品时赠送等级积分数,-1表示按商品价格赠送</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<a href="javascript:;"><img src="../public/images/notice.gif" alt=""></a>
+										积分购买金额:
+									</td>
+									<td>
+										<input type="text" value="0" size="20">
+										<br/>
+										<span>(此处需填写金额)购买该商品时最多可以使用积分的金额</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										<input type="checkbox">
+										促销价:
+									</td>
+									<td>
+										<input type="text" value="0" size="20" disabled>
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										促销日期:
+									</td>
+									<td>
+										<input type="text" value="2018-02-27" readonly="readonly" size="12">
+										<input type="button" value="选择" class="button">
+										-
+										<input type="text" value="2018-03-26" readonly="readonly" size="12" >
+										<input type="button" value="选择" class="button">
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										上传商品图片:
+									</td>
+									<td>
+										<input type="file" name="goods_img" size="35">
+										<img src="../public/images/no.gif" alt="">
+										<br/>
+										<input type="text" size="40" value="商品缩略图外部URL">
+									</td>
+								</tr>
+								<tr>
+									<td class="label">
+										上传商品缩略图:
+									</td>
+									<td>
+										<input type="file" name="goods_img" size="35">
+										<img src="../public/images/no.gif" alt="">
+										<br/>
+										<input type="text" size="40" value="商品缩略图外部URL" disabled>
+										<br/>
+										<label for="">
+											<input type="checkbox" checked="checked">
+											自动生成商品缩略图
+										</label>
+										
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+					
+					<div class="tab_box1">
+						
+					</div>
+
+
+
+					<div class="button_div">
+						<input type="button" value="确定" class="button" onclick="">
+						<input type="reset" value="重置" class="button">
+					</div>
+				</div>
+
 			</div>
+
+			<div class="footer">
+				共执行 12 个查询，用时 0.046510 秒，Gzip 已禁用，内存占用 3.194 MB
+				<br/>
+				版权所有 © 2005-2018 上海商派软件有限公司，并保留所有权利。
+			</div>
+			
 		</div>
 		
-	</div>
+		
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-body,ol,ul,li,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,header,nav,section,footer{margin:0;padding:0;box-sizing: border-box;} 
+body,ol,ul,li,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,header,nav,section,footer{margin:0;padding:0;/* box-sizing: border-box; */} 
 body{font:12px "微软雅黑","Arial Narrow",HELVETICA;background:#fff;}
 a{text-decoration:none;color:#ffffff;} 
 b,strong{font-weight: normal;}
@@ -11,19 +11,22 @@ html,div{box-sizing: border-box;}
 
 /* ===============================top=========================== */
 html{
-	width: 100%;
 	height: 100%;
 }
 body{
 	width: 100%;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
+	/* overflow: hidden; */
+	/* display: flex;
+	flex-direction: column; */
 }
 .top_box{
 	background: #303030;
 	width: 100%;
 	height: 118px;
+	/* position: absolute;
+	left: 0;
+	top: 0; */
 }
 .top_menu{
 	background: #303030;
@@ -123,22 +126,27 @@ body{
 /*  ==================bottom===================  */
 
 .bottom_box{
-	width: 100%;
+	/* width: 100%;
 	height: 100%;
-	display: flex;
-	justify-content: flex-start;
+	overflow: hidden; */
+	/* display: flex;
+	justify-content: space-around; */
 }
 .left_box{
 	width: 180px;
 	height: 100%;
-	overflow-y: scroll;
+	/* padding-top: 118px;*/
 	background:#dddddd;
+	float: left;
+	overflow-y: auto;
 }
 .center_box{
 	width: 10px;
 	height: 100%;
+	/* margin-top: 118px; */
 	position: relative;
 	background: #303030;
+	float: left;
 }
 .center_box img{
 	cursor: pointer;
@@ -204,25 +212,164 @@ body{
 /*  ==============right===============  */
 .right_box{
 	margin: 0;
-	width: 100%;
+	margin-left: 190px;
+	/* margin-top: 118px; */
 	height: 100%;
-	min-width: 773px;
+	/* min-width: 773px; */
 	color: #192e32;
 	font-size: 12px;
 	background: url(../images/body_bj.jpg);
 	padding: 10px;
 	font-family: Microsoft Yahei;
+	overflow-y: auto;
+}
+
+h1{
+	border-bottom: 1px solid #ccc;
+	color: #333;
+	font-weight: normal;
+	padding: 7px 10px;
+	margin: 0 0 10px 0;
+	overflow: hidden;
+}
+h1 a{
+	color: #333;
+}
+h1 .action_span1{
+	color: #4c4c4c;
+	font-size: 18px;
+	font-weight: normal;
+}
+.help_sub{
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+}
+h1 .action_span a{
+	float: right;
+	height: 26px;
+	line-height: 26px;
+	padding: 0 10px 0 23px;	
+	background: #c43926 url(../images/icon_add02.gif) no-repeat 6px center;
+	border-radius: 3px;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: normal;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+.content{
+	background: #f3f3f3;
+	border: 1px solid #d7d7d7;
+	margin: 0 0 10px 0;
+	padding: 1px;
+}
+.tab_div{
+	margin-top: 0px;
+	background: #efefef;
+	padding-left: 10px;
+	height: 39px;
+}
+.tab_div p{
+	margin: 2px 0 0 0;
+}
+.tab-front{
+	background: #fefefe;
+	height: 39px;
+	line-height: 39px;
+	display: block;
+	float: left;
+	padding: 0 20px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+.tab-back{
+	padding: 0 20px;
+	text-align: center;
+	font-size: 13px;
+	display: block;
+	float: left;
+	color: #787878;
+	line-height: 39px;
+	cursor: pointer;
+}
+
+/*  ==============tab_body==============  */
+.tab_body{
+	padding: 10px;
+	background: #fefefe;
+}
+table{
+	width: 90%;
+	margin: 0 auto;
+}
+td.label{
+	text-align: right;
+	vertical-align: top;
+	font-weight: bold;
+	padding: 5px 1em;
+	width: 30%;
+	line-height: 30px;
+}
+.tab_body input[type=text]{
+	margin: 5px 0;
+}
+
+select{
+	margin: 5px 0;
+}
+
+span.require-field{
+	margin-left: 1em;
+	font: 12px verdana;
+	color: #ff0000;
+}
+td.label img{
+	vertical-align: middle;
+}
+a.special:link,a.special:visited{
+	margin: 0 5px;
+	padding: 1px 5px;
+	border: 1px solid #91c4d0;
+	border-right: 2px solid #278296;
+	border-bottom: : 2px solid #278296;
+	background: #ddeef2;
+	text-decoration: none;
+	font-weight: 400;
+	color: #335b64;
+}
+input, textarea, select, button {
+    font: 12px Microsoft Yahei, "courier new";
+}
+input.button{
+	padding: 5px 15px 5px;
+	margin: 2px 2px;
+	border: none;
+	background: #ff3f3f;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+.button_div{
+	text-align: center;
+	padding: 3px 0;
 }
 
 
 
 
-
-
-
-
-
-
+.footer{
+	background: #f3f3f3 url(../images/th_bg.gif) repeat-x;
+	border: 1px solid #ddd;
+	padding: 15px;
+	color: #9cacaf;
+	margin: 10px 0;
+	text-align: center;
+}
 
 
 
