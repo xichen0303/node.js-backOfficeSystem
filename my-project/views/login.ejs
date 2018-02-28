@@ -3,29 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	<title>登录页面</title>
-	<link rel="stylesheet" href="../public/stylesheets/login.css">
+	<link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 <body>
 	<div class="wrap">
 		<div class="top">
 			<div class="logo">
-				<img src="../public/images/shopex.png" alt="">
+				<img src="/images/shopex.png" alt="">
 			</div>
 		</div>
 		<div class="center_wrap">
 			<div class="logo_center">
-				<img src="../public/images/ecshop-logo.png" alt="">
+				<img src="/images/ecshop-logo.png" alt="">
 			</div>
 			<div class="clear"></div>
 			<div class="z-bd">
 				<div class="login_box">
 					<div class="inp one">
 						<i class="iconfont">&#xe623;</i>
-						<input type="text" name="username" class="username" placeholder="用户名">
+						<input type="text" name="username" id="username" class="username" placeholder="用户名">
 					</div>
 					<div class="inp two">
 						<i class="iconfont">&#xe6e6;</i>
-						<input type="password" name="password" class="password" placeholder="密码">
+						<input type="password" name="password" id="psw" class="password" placeholder="密码">
 					</div>
 					<div class="inp three">
 						<i class="iconfont">&#xe615;</i>
@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div class="inp four">
-						<input type="submit" class="btn" value="登录">
+						<input type="submit" onclick="login()" class="btn" value="登录">
 					</div>
 					<div class="inp five">
 						<input type="checkbox" id="remember">
@@ -50,3 +50,24 @@
 	
 </body>
 </html>
+<script src="/js/jquery-1.11.1.js"></script>
+<script>
+	function login() {
+		$.ajax({
+			url: "/api/login",
+			type: "post",
+			data: {
+				username: $("#username").val(),
+				psw: $("#psw").val()
+			},
+			success: function(res) {
+				console.log(res);
+				if(res.status == 1) {
+					location.href = "/home";
+				} else {
+					alert(res.message);
+				}
+			}
+		})
+	}
+</script>

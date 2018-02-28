@@ -384,4 +384,18 @@ input.button{
 }
 
 
-
+/* ==========================列表页========================== */
+.goods_ul th{
+	line-height: 39px;
+	background: #f3f3f3 url(../images/th_bg.gif) repeat-x;
+	white-space: nowrap;
+}
+.goods_ul img,.goods_ul input{
+	vertical-align: middle;
+}
+.goods_ul td{
+	background: #ffffff;
+	padding: 10px;
+	line-height: 39px;
+	text-align: center;
+}
