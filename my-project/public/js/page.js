@@ -20,6 +20,7 @@ function left_nav(){
 		// $(this).parent().css("display","block");
 		$(this).css("background-color","#797979").siblings().css("background-color","#575757");
 	})
+
 }
 left_nav();
 
