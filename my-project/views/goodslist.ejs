@@ -11,10 +11,10 @@
 				<span class="action_span1"><a href="javascript:;">ECSHOP 管理中心</a></span>
 				<span class="action_span1">- 添加新商品</span>
 				<span class="help_sub"><a href="javascript:;"><img src="/images/jnsy.png" alt=""></a></span>
-				<span class="action_span"><a href="javascript:;">商品列表</a></span>
+				<span class="action_span"><a target="mainpage" href="http://localhost:8080/right">添加新商品</a></span>
 			</h1>
 			<div class="content">
-				<div class="tab_div">
+				<div class="tab_div" style="background: #f3f3f3 url(../images/th_bg.gif) repeat-x;border: 1px solid #ddd;padding: 5px;color: #808080;margin: 0 0 10px 0;">
 					<p>
 						<img src="/images/icon_search.gif" alt="">
 						<select name="" id="">
@@ -34,7 +34,7 @@
 						<input type="submit" class="button" value="搜索">
 					</p>
 				</div>
-				<table cellpadding="3" cellspacing="1" class="goods_ul" >
+				<table cellpadding="3" cellspacing="1" class="goods_ul" style="width: 100%;background: #ddd;" >
 					<tbody>
 						<tr>
 							<th>
@@ -77,8 +77,77 @@
 								<img src="/images/icon_trash.gif" alt="">
 							</td>
 						</tr>
+
+						<% for(var i = 0 ; i < list.length ; i++) { %>
+							<tr>
+								<td>
+									<input type="checkbox">
+									256
+								</td>
+								<td><%= list[i].goods_name %></td>
+								<td><%= list[i].goods_num %></td>
+								<td><%= list[i].goods_price %></td>
+								<td><img src="/images/yes.gif" alt=""></td>
+								<td><img src="/images/no.gif" alt=""></td>
+								<td><img src="/images/yes.gif" alt=""></td>
+								<td><img src="/images/no.gif" alt=""></td>
+								<td>100</td>
+								<td>1</td>
+								<td>1</td>
+								<td>
+									<img src="/images/icon_view.gif" alt="">
+									<img src="/images/icon_edit.gif" alt="">
+									<img src="/images/icon_copy.gif" alt="">
+									<img src="/images/icon_trash.gif" alt="">
+								</td>
+							</tr>
+
+						<% } %>
+
+							
+
 					</tbody>
 				</table>
+				<table style="width: 100%;">
+					<tbody>
+						<tr>
+							<td style="background: #fff;padding: 6.5px;line-height: 23px;">
+								<div style="text-align: right;">
+									总计
+									<span>3</span>
+									个记录分为
+									<span>1</span>
+									页，每页
+									<span>15</span>
+									|
+									<span>第一页</span>
+									<span>上一页</span>
+									<span>下一页</span>
+									<span>最末页</span>
+									<select name="" id="">
+										<option value="">1</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<select name="" id="">
+						<option value="">请选择</option>
+						<option value="">回收站</option>
+						<option value="">上架</option>
+						<option value="">下架</option>
+						<option value="">精品</option>
+						<option value="">取消精品</option>
+						<option value="">新品</option>
+						<option value="">取消新品</option>
+						<option value="">热销</option>
+						<option value="">取消热销</option>
+						<option value="">转移到分类</option>
+					</select>
+					<input type="button" value="确定" class="button">
+				</div>
 			<!--   ======================    -->
 				
 

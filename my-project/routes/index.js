@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var UserModel = require("../model/UserModel");
+var GoodsModel = require("../model/GoodsModel");
+var multiparty = require('multiparty');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -23,9 +25,41 @@ router.get('/right', function(req, res, next) {
   res.render('right', {});
 });
 
-router.get('/goodslist', function(req, res, next) {
-  res.render('goodslist', {});
-});
+// router.get('/goodslist', function(req, res, next) {
+//   res.render('goodslist', {});
+// });
+
+router.get('/goodslist', function(req, res){
+	GoodsModel.find({}, function(err, docs) {
+		res.render("goodslist", {list: docs});
+	})
+})
+
+router.post("/api/add_goods", function(req, res) {
+	var Form = new multiparty.Form({
+		uploadDir: "./public/imgs"
+	})
+	Form.parse(req, function(err, body, files) {
+		var goods_name = body.goods_name[0];
+		var goods_num = body.goods_num[0];
+		var goods_price = body.goods_price[0];
+		var goods_img = files.goods_img[0].path;
+		goods_img = goods_img.substr(goods_img.lastIndexOf("\\")+1);
+
+		var gm = new GoodsModel();
+		gm.goods_name = goods_name;
+		gm.goods_num = goods_num;
+		gm.goods_price = goods_price;
+		gm.goods_img = goods_img;
+		gm.save(function(err){
+			if( !err ){
+				res.send("商品保存成功");
+			} else {
+				res.send("商品保存失败");
+			}
+		})
+	})
+})
 
 router.post("/api/login", function(req, res) {
 	var username = req.body.username;

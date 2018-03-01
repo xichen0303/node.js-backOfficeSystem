@@ -11,7 +11,7 @@
 				<span class="action_span1"><a href="javascript:;">ECSHOP 管理中心</a></span>
 				<span class="action_span1">- 添加新商品</span>
 				<span class="help_sub"><a href="javascript:;"><img src="images/jnsy.png" alt=""></a></span>
-				<span class="action_span"><a href="javascript:;">商品列表</a></span>
+				<span class="action_span"><a target="mainpage" href="http://localhost:8080/goodslist">商品列表</a></span>
 			</h1>
 			<div class="content">
 				<div class="tab_div">
@@ -28,9 +28,15 @@
 				</div>
 			<!--   ======================    -->
 				<div class="tab_body">
+
+					<form id="frm" action="/api/add_goods" method="post" enctype="multipart/form-data">
+									
 					<div class="tab_box1" style="display: block;">
 						<table>
 							<tbody>
+
+								
+								
 								<tr>
 									<td class="label">商品名称:</td>
 									<td>
@@ -54,7 +60,7 @@
 										商品货号:
 									</td>
 									<td>
-										<input type="text" name="goods_sn" size="20"><span></span><br/>
+										<input type="text" name="goods_num" size="20"><span></span><br/>
 										<span>如果您不输入商品货号，系统将自动生成一个唯一的货号。</span>
 									</td>
 								</tr>
@@ -113,7 +119,7 @@
 								<tr>
 									<td class="label">本店售价:</td>
 									<td>
-										<input type="text" name="shop_price" style="float: left;" value="0" size="20">
+										<input type="text" name="goods_price" style="float: left;" value="0" size="20">
 										<input type="button" value="按市场价计算" style="margin-top: 4px;margin-left: 5px">
 										<span class="require-field">*</span>
 									</td>
@@ -247,6 +253,8 @@
 										
 									</td>
 								</tr>
+
+								
 							</tbody>
 						</table>
 						
@@ -570,9 +578,11 @@
 
 
 					<div class="button_div">
-						<input type="button" value="确定" class="button" onclick="">
+						<input type="button" value="确定" class="button" onclick="addGoods()">
 						<input type="reset" value="重置" class="button">
 					</div>
+
+					</form>
 				</div>
 
 			</div>
@@ -588,3 +598,8 @@
 </html>
 <script src="js/jquery-1.11.1.js"></script>
 <script src="js/page.js"></script>
+<script>
+	function addGoods() {
+		document.getElementById("frm").submit();
+	}
+</script>
