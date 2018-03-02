@@ -95,10 +95,10 @@
 								<td>1</td>
 								<td>1</td>
 								<td>
-									<img src="/images/icon_view.gif" alt="">
-									<img src="/images/icon_edit.gif" alt="">
-									<img src="/images/icon_copy.gif" alt="">
-									<img src="/images/icon_trash.gif" alt="">
+									<a href="javascript:;"><img src="/images/icon_view.gif" alt=""></a>
+									<a href="javascript:;" class="goods_edit"><img src="/images/icon_edit.gif" alt=""></a>
+									<a href="javascript:;"><img src="/images/icon_copy.gif" alt=""></a>
+									<a href="javascript:;" class="goods_del"><img src="/images/icon_trash.gif" alt=""></a>
 								</td>
 							</tr>
 
@@ -160,3 +160,26 @@
 		</div>
 </body>
 </html>
+<script src="/js/jquery-1.11.1.js"></script>
+<script>
+	goods_remove();
+	function goods_remove() {
+		$(".goods_del").click(function() {
+			if( confirm("确认删除吗？") ) {
+				$(this).parent().parent().remove();
+				var ind = $(this).parent().parent().children();
+				$.ajax({
+					url:"/api/removeGoods",
+					type: "post",
+					data: {
+						goods_name : ind.eq(1).html(),
+						goods_num : ind.eq(2).html()
+					},
+					success: function(res){
+						console.log(res);
+					}
+				})
+			}
+		})
+	}
+</script>
