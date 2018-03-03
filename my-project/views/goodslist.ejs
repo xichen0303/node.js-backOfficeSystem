@@ -97,11 +97,11 @@
 							<td style="background: #fff;padding: 6.5px;line-height: 23px;">
 								<div style="text-align: right;">
 									总计
-									<span><%= list.length %></span>
+									<span><%= goodsCount %></span>
 									个记录分为
-									<span>1</span>
+									<span><%= Math.ceil(goodsCount/count) %></span>
 									页当前第
-									<span>1</span>
+									<span><%= pageNo %></span>
 									页，每页
 									<input type="text" value="<%=count%>" size="3" id="pageSize" onkeypress="changePage()">
 									|
@@ -109,10 +109,14 @@
 									<% if( pageNo > 1 ){ %>
 									<a class="pageco" href="/goodslist?pageNo=<%= pageNo -1 %>&count=<%= count %>">上一页</a>
 									<% } %>
+									<% if( pageNo < Math.ceil(goodsCount/count) ) {%>
 									<a class="pageco" href="/goodslist?pageNo=<%= pageNo +1 %>&count=<%= count %>">下一页</a>
+									<% } %>
 									<a class="pageco" href="">最末页</a>
 									<select name="" id="">
-										<option value="">1</option>
+										<% for( var i = 0 ; i < Math.ceil(goodsCount/count); i++ ){ %>
+										<option value=""><%= i +1 %></option>
+										<% } %>
 									</select>
 								</div>
 							</td>
@@ -169,7 +173,18 @@
 	function changePage(e){
 		var e = e || event;
 		if(e.keyCode == 13){
-			
+			$.ajax({
+				url: "/api/goodslist",
+				type: "get",
+				data: {
+					count: $("#pageSize").val()
+				},
+				success: function(err){
+					if(err) {
+						console.log(err);
+					}
+				}
+			})
 		}
 	}
 	

@@ -31,16 +31,13 @@ router.get('/goodslist', function(req, res){
 	var pageNo = parseInt(req.query.pageNo || 1);
 	var count = parseInt(req.query.count || 15);
 
-	
-
-	var query = GoodsModel.find({}).skip( (pageNo-1)*count ).limit(count).sort({date: -1});
-	query.exec(function(err, docs){
-		res.render("goodslist", {list: docs, pageNo: pageNo, count: count});
-	});
-	
-	/*GoodsModel.find({}, function(err, result) {
-		res.render("goodslist", {listNo: result});
-	})*/
+	GoodsModel.find({}, function(err, result) {
+		var goodsCount = result.length;
+		var query = GoodsModel.find({}).skip( (pageNo-1)*count ).limit(count).sort({date: -1});
+		query.exec(function(err, docs){
+			res.render("goodslist", {list: docs, pageNo: pageNo, count: count, goodsCount: goodsCount});
+		});
+	})
 })
 //  商品删除
 router.get("/api/goods_del", function(req, res) {
