@@ -195,9 +195,9 @@ body{
 	cursor: pointer;
 	background: #575757 url(../images/menu_1.png) 9px 0 no-repeat;
 }
-.left_box>ul>li:hover{
+/* .left_box>ul>li:hover{
 	background-color: #454545;
-}
+} */
 .left_box>ul>li>ul{
 	padding: 0;
 	margin: 0;
@@ -212,8 +212,14 @@ body{
 	font-weight: normal;
 	background: #575757;
 }
-.left_box>ul>li>ul>li:hover{
+ .left_box>ul>li>ul>li:hover{
 	background: #797979;
+} 
+.bgColor797979{
+	background: #797979 !important;
+}
+.bgColor454545{
+	background-color: #454545 !important;
 }
 /*  ==============right===============  */
 

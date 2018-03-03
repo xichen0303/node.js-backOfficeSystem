@@ -4,6 +4,13 @@
 	<meta charset="UTF-8">
 	<title>商品列表</title>
 	<link rel="stylesheet" href="/stylesheets/style.css" />
+	<style>
+		.pageco{color: #192E32;}
+		.pageco:hover{
+			text-decoration: underline;
+			color: ;
+		}
+	</style>
 </head>
 <body>
 	<div class="right_box">
@@ -30,11 +37,11 @@
 							<option value="">全部</option>
 						</select>
 						关键字
-						<input type="text" size="15">
+						<input type="text" size="15" id="keyWord">
 						<input type="submit" class="button" value="搜索">
 					</p>
 				</div>
-				<table cellpadding="3" cellspacing="1" class="goods_ul" style="width: 100%;background: #ddd;" >
+				<table cellpadding="3" cellspacing="1" class="goods_ul" style="width: 100%;background: #ddd;" class="bgblue">
 					<tbody>
 						<tr>
 							<th>
@@ -55,34 +62,13 @@
 							<th>操作</th>
 							
 						</tr>
-						<tr>
-							<td>
-								<input type="checkbox">
-								256
-							</td>
-							<td>something</td>
-							<td>E123</td>
-							<td>0.00</td>
-							<td><img src="/images/yes.gif" alt=""></td>
-							<td><img src="/images/no.gif" alt=""></td>
-							<td><img src="/images/yes.gif" alt=""></td>
-							<td><img src="/images/no.gif" alt=""></td>
-							<td>100</td>
-							<td>1</td>
-							<td>1</td>
-							<td>
-								<img src="/images/icon_view.gif" alt="">
-								<img src="/images/icon_edit.gif" alt="">
-								<img src="/images/icon_copy.gif" alt="">
-								<img src="/images/icon_trash.gif" alt="">
-							</td>
-						</tr>
+						
 
 						<% for(var i = 0 ; i < list.length ; i++) { %>
 							<tr>
 								<td>
 									<input type="checkbox">
-									256
+									<%= i+1 %>
 								</td>
 								<td><%= list[i].goods_name %></td>
 								<td><%= list[i].goods_num %></td>
@@ -98,32 +84,33 @@
 									<a href="javascript:;"><img src="/images/icon_view.gif" alt=""></a>
 									<a href="javascript:;" class="goods_edit"><img src="/images/icon_edit.gif" alt=""></a>
 									<a href="javascript:;"><img src="/images/icon_copy.gif" alt=""></a>
-									<a href="javascript:;" class="goods_del"><img src="/images/icon_trash.gif" alt=""></a>
+									<a href="javascript:;" onclick="del('<%=list[i]._id%>')" class=""><img src="/images/icon_trash.gif" alt=""></a>
 								</td>
 							</tr>
 
 						<% } %>
-
-							
-
 					</tbody>
 				</table>
-				<table style="width: 100%;">
+				<table style="width: 100%;" class="bgblue">
 					<tbody>
 						<tr>
 							<td style="background: #fff;padding: 6.5px;line-height: 23px;">
 								<div style="text-align: right;">
 									总计
-									<span>3</span>
+									<span><%= list.length %></span>
 									个记录分为
 									<span>1</span>
+									页当前第
+									<span>1</span>
 									页，每页
-									<span>15</span>
+									<input type="text" value="<%=count%>" size="3" id="pageSize" onkeypress="changePage()">
 									|
-									<span>第一页</span>
-									<span>上一页</span>
-									<span>下一页</span>
-									<span>最末页</span>
+									<a class="pageco" href="/goodslist?pageNo=1&count=<%= count %>">第一页</a>
+									<% if( pageNo > 1 ){ %>
+									<a class="pageco" href="/goodslist?pageNo=<%= pageNo -1 %>&count=<%= count %>">上一页</a>
+									<% } %>
+									<a class="pageco" href="/goodslist?pageNo=<%= pageNo +1 %>&count=<%= count %>">下一页</a>
+									<a class="pageco" href="">最末页</a>
 									<select name="" id="">
 										<option value="">1</option>
 									</select>
@@ -162,24 +149,29 @@
 </html>
 <script src="/js/jquery-1.11.1.js"></script>
 <script>
-	goods_remove();
-	function goods_remove() {
-		$(".goods_del").click(function() {
-			if( confirm("确认删除吗？") ) {
-				$(this).parent().parent().remove();
-				var ind = $(this).parent().parent().children();
-				$.ajax({
-					url:"/api/removeGoods",
-					type: "post",
-					data: {
-						goods_name : ind.eq(1).html(),
-						goods_num : ind.eq(2).html()
-					},
-					success: function(res){
-						console.log(res);
-					}
-				})
+	function del(gid) {
+		$.ajax({
+			url: "/api/goods_del",
+			type: "get",
+			data: {
+				gid: gid
+			},
+			success: function(res){
+				console.log(res);
+				if(res.status == 1) {
+					location.reload(true);
+				} else {
+					alert(res.message);
+				}
 			}
 		})
 	}
+	function changePage(e){
+		var e = e || event;
+		if(e.keyCode == 13){
+			
+		}
+	}
+	
+
 </script>

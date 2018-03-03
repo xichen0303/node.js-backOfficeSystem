@@ -25,32 +25,38 @@ router.get('/right', function(req, res, next) {
   res.render('right', {});
 });
 
-// router.get('/goodslist', function(req, res, next) {
-//   res.render('goodslist', {});
-// });
 
 //   商品列表
 router.get('/goodslist', function(req, res){
-	GoodsModel.find({}, function(err, docs) {
-		res.render("goodslist", {list: docs});
-	})
-})
+	var pageNo = parseInt(req.query.pageNo || 1);
+	var count = parseInt(req.query.count || 15);
 
-router.post("/api/removeGoods", function(req, res) {
-	var goods_name = req.body.goods_name;
-	var goods_num = req.body.goods_num;
+	
+
+	var query = GoodsModel.find({}).skip( (pageNo-1)*count ).limit(count).sort({date: -1});
+	query.exec(function(err, docs){
+		res.render("goodslist", {list: docs, pageNo: pageNo, count: count});
+	});
+	
+	/*GoodsModel.find({}, function(err, result) {
+		res.render("goodslist", {listNo: result});
+	})*/
+})
+//  商品删除
+router.get("/api/goods_del", function(req, res) {
 	//  数据库操作
-	GoodsModel.find({goods_name:goods_name,goods_num:goods_num}, function(err, docs) {
-		var condition = {goods_num:goods_num};
-		if( !err && docs.length > 0 ) {
-			GoodsModel.remove(condition, function(err) {
-				if( !err ) {
-					res.send("商品已删除");
-				} else {
-					res.send("商品删除失败");
-				}
-			})
-		}
+	GoodsModel.findByIdAndRemove({_id: req.query.gid}, function(err) {
+		var result = {
+				status : 1,
+				message: "商品删除成功"
+			};
+			if( !err ){
+				res.send(result);
+			} else {
+				result.status = -119;
+				result.message = "商品删除失败";
+				res.send(result);
+			}
 	})
 })
 
@@ -72,10 +78,16 @@ router.post("/api/add_goods", function(req, res) {
 		gm.goods_price = goods_price;
 		gm.goods_img = goods_img;
 		gm.save(function(err){
+			var result = {
+				status : 1,
+				message: "商品保存成功"
+			};
 			if( !err ){
-				res.send("商品保存成功");
+				res.send(result);
 			} else {
-				res.send("商品保存失败");
+				result.status = -110;
+				result.message = "商品保存失败";
+				res.send(result);
 			}
 		})
 	})
